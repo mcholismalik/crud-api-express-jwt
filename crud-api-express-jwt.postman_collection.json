@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "50c356ae-8f38-4551-9b36-2cebfe47ad91",
+		"name": "crud-api-express-jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{host}}/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"0\",\n    \"username\": \"poo\",\n    \"password\": \"123\",\n    \"full_name\": \"malik cholis\",\n    \"email\": \"malik@gmail.com\",\n    \"is_activated\": \"1\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/auth/register",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/auth/login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ba4678ce-c6ad-470b-8e6b-737ca7dda25b",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "840399ba-51b9-42bc-a9a7-761c0e21f258",
+						"exec": [
+							"var d = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", d.data.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"poo\",\n    \"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/auth/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/customers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/customers",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/customers/:id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/customers/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
