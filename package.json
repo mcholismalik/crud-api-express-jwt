@@ -1,5 +1,5 @@
 {
-  "name": "crols",
+  "name": "crud-api-express-jwt",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cols",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
