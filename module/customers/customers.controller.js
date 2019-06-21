@@ -19,4 +19,16 @@ const getCustomerByID = async (req, res) => {
 	}
 }
 
-export { getAllCustomers, getCustomerByID }
+const updateCustomerByID = async (req, res) => {
+	try {
+		let data = await Customers.update(
+			req.body,
+			{ where: { id: req.body.id } }
+		)
+		ApiResponse.ok(res, 'Update customer by id success', data)
+	} catch (err) {
+		ApiResponse.internalServerError(res, 'Internal server error', err)
+	}
+}
+
+export { getAllCustomers, getCustomerByID, updateCustomerByID }
